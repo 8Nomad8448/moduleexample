@@ -37,14 +37,28 @@ class Nomadform extends FormBase {
       '#required' => TRUE,
       '#ajax' => [
         'callback' => '::validateNameAjax',
-        'event' => 'change',
+        'event' => 'keyup',
         'progress' => [
           'type' => 'throbber',
           'message' => t('Verifying name..'),
         ],
       ],
     ];
-        $form['system_messages'] = [
+    $form ['email'] = [
+      '#title' => t('Your email:'),
+      '#type' => 'email',
+      '#required' => TRUE,
+      '#description' => t("Your email can contain only latin alphabet letters, 'at' sign, dash sign, underscore sign, and dots."),
+      '#ajax' => [
+        'callback' => '::validateEmailAjax',
+        'event' => 'keyup',
+        'progress' => [
+          'type' => 'throbber',
+          'message' => t('Verifying email..'),
+        ],
+      ],
+    ];
+    $form['system_messages'] = [
       '#markup' => '<div id="form-system-messages"></div>',
       '#weight' => -100,
     ];
@@ -71,9 +85,68 @@ class Nomadform extends FormBase {
     if (!preg_match('/^[A-Za-z]*$/', $value) || strlen($value)<2 || strlen($value)>32) {
       $form_state->setErrorByName ('name', t('The name %name is not valid.', array('%name' => $value)));
     }
+    if (!filter_var($emailvalue, FILTER_VALIDATE_EMAIL) && preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\]/', $emailvalue)) {
+      $form_state->setErrorByName ('email', t('The email %email is not valid.', array('%email' => $emailvalue)));
+    }
   }
-  
-    /**
+
+  /**
+   * (@inheritdoc).
+   */
+  public function validateNameAjax(array &$form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+    $value = $form_state->getValue('name');
+    if ($value == '') {
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>The name field is required.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+    </div>"));
+    }
+    elseif (!preg_match('/^[A-Za-z]*$/', $value) || strlen($value) < 2 || strlen($value) > 32) {
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>The name $value is not valid.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+    </div>"));
+    }
+    else {
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class
+='alert alert-dismissible fade show alert-success'>The name $value is correct.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+</div>"));
+    }
+    return $response;
+  }
+  public function validateEmailAjax(array &$form, FormStateInterface $form_state) {
+    $response = new AjaxResponse();
+    $emailvalue = $form_state->getValue('email');
+    if ($emailvalue == '') {
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>Email field is required.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+    </div>"));
+    }
+    elseif (filter_var($emailvalue, FILTER_VALIDATE_EMAIL) && !preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\]/', $emailvalue)) {
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-success'>Email $emailvalue is correct.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+</div>"));
+    }
+    else {
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>Email $emailvalue is not valid.
+<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span aria-hidden='true'>×</span>
+    </button>
+    </div>"));
+    }
+    return $response;
+  }
+  /**
    * {@inheritdoc}
    */
   public function ajaxSubmitCallback(array &$form, FormStateInterface $form_state) {
@@ -91,9 +164,9 @@ class Nomadform extends FormBase {
     $ajax_response->addCommand(new HtmlCommand('#form-system-messages', $messages));
     return $ajax_response;
   }
-  
+
   /**
-   * (@inheritdoc).
+   *  (@inheritdoc).
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     \Drupal::messenger()->addMessage($this->t('Form Submitted Successfully'), 'status', TRUE);
