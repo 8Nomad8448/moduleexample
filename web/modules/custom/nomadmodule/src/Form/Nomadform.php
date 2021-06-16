@@ -58,6 +58,17 @@ class Nomadform extends FormBase {
         ],
       ],
     ];
+    $form ['image'] = [
+      '#title' => t('Add your pet image'),
+      '#type' => 'managed_file',
+      '#upload_validators' => [
+        'file_validate_extensions' => ['png jpg jpeg'],
+        'file_validate_size' => [2097152],
+      ],
+      '#description' => t("Your pet image size must be less than 2MB. Only files with the following extensions are allowed: png, jpg, jpeg."),
+      '#upload_location' => 'public://photos',
+      '#required' => TRUE,
+    ];
     $form['system_messages'] = [
       '#markup' => '<div id="form-system-messages"></div>',
       '#weight' => -100,
