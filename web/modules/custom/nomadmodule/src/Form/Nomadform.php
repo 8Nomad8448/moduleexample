@@ -36,14 +36,21 @@ class Nomadform extends FormBase {
     $form ['submit'] = [
       '#type' => 'submit',
       '#value' => t('Add cat'),
-      '#ajax' => [
-        'callback' => '::ajaxSubmitCallback',
-        'event' => 'click',
-      ],
     ];
     return $form;
   }
 
+  /**
+   * (@inheritdoc).
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $value = $form_state->getValue('name');
+    $emailvalue = $form_state->getValue('email');
+    if (!preg_match('/^[A-Za-z]*$/', $value) || strlen($value)<2 || strlen($value)>32) {
+      $form_state->setErrorByName ('name', t('The name %name is not valid.', array('%name' => $value)));
+    }
+  }
+  
   /**
    * (@inheritdoc).
    */
