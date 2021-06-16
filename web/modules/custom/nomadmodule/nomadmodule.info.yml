@@ -1,0 +1,8 @@
+name: nomadmodule
+type: module
+description: 'This module creates a page with a list of cats and a form where users can leave photos of their pets.'
+package: nomadmodule
+version: 1.0
+core_version_requirement: '^8.8 || ^9'
+configure: nomadmodule.amin_settings
+
