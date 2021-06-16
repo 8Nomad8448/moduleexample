@@ -1,0 +1,13 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+#page #main-wrapper .row-offcanvas {
+  max-width: 1250px;
+  width: 100%;
+  margin: 3em auto;
+}
+.page-node-1, .path-services, .path-projects, .path-team, .path-news, .path-client-brands {
+  .view-content {
+    flex-direction: column;
+  }
+}

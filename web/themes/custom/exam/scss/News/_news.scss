@@ -1,0 +1,188 @@
+#block-views-block-news-block-1 {
+  width: 100%;
+  margin: 5em auto 0;
+  height: auto;
+  position: relative;
+  padding: 1em;
+  &:before {
+    content: "";
+    border-top: 1px solid grey;
+    position: absolute;
+    top: 0;
+    left: 7%;
+    width: 86.5%;
+  }
+  .views-exposed-form {
+    margin-top: 2em;
+    padding-top: 2em;
+    width: 100%;
+    height: auto;
+    .form-row {
+      width: 100%;
+      max-width: 1250px;
+      margin: 0 auto;
+      height: auto;
+      .form-type-textfield {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 0;
+        padding: 5px;
+        background: #f5f5f5;
+      }
+      .form-actions {
+        margin-bottom: 0;
+        padding: 5px;
+        background: #f5f5f5;
+        button {
+          background: #67bfdc;
+          border-color: #67bfdc;
+        }
+      }
+    }
+  }
+  h2 {
+    text-align: center;
+    text-transform: $up;
+    font-size: 24px;
+    font-weight: 900;
+    color: #373645;
+    letter-spacing: .02em;
+    margin-bottom: 1em;
+    position: absolute;
+    top: -14px;
+    padding: 0 10px;
+    left: 44.5%;
+    background: #fff;
+  }
+  .view-id-news {
+    background-image: url("../images/backgroung_repeat.png");
+    padding-bottom: 5em;
+    width: 100%;
+  }
+  .view-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-top: 1em;
+  }
+  .views-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #fff;
+    .layout__region--content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: #fff;
+      .field--name-dynamic-token-fieldnode-custom-date-news {
+        width: 10%;
+        p {
+          margin-bottom: 0;
+          &:nth-child(2n-1) {
+            font-size: 20px;
+            color: #373645;
+            font-weight: 400;
+          }
+          &:nth-child(2n) {
+            font-size: 36px;
+            color: #6e9bca;
+            font-weight: 900;
+          }
+          &:nth-child(4n-1) {
+            font-size: 12px;
+            color: #dadada;
+            font-weight: 300;
+          }
+        }
+      }
+      .not_date_wrapp {
+        width: 90%;
+        .top_part_wrapp {
+          display: flex;
+          justify-content: space-between;
+          .field--name-user-picture {
+            img {
+              width: 70px;
+              height: auto;
+            }
+          }
+          .field--name-user {
+            .layout__region--content div {
+              display: flex;
+              text-transform: $up;
+              justify-content: flex-start;
+              .field--name-field-position {
+                font-weight: 300;
+                font-size: 14px;
+                padding-left: 5px;
+                color: #cccccc;
+                &:after {
+                  content: " ";
+                }
+              }
+              .field--name-username h2 {
+                font-size: 12px;
+                font-weight: 700;
+                position: static;
+                padding-top: 3px;
+                padding-left: 5px;
+                color: #373645;
+                &:after {
+                  content: " / ";
+                }
+              }
+              .field--name-field-speciality {
+                font-size: 12px;
+                font-weight: 400;
+                color: #6f9ccb;
+                padding-left: 5px;
+              }
+            }
+          }
+          .field--name-field-news-date {
+            width: fit-content;
+            font-size: 12px;
+            color: #cccccc;
+            text-transform: $up;
+          }
+        }
+        .bot_part_wrapp {
+          display: flex;
+          flex-direction: column;
+          .field--name-node-title h2{
+            font-size: 22px;
+            text-align: left;
+            position: static;
+          }
+          .field--name-body {
+            text-align: justify;
+            p {
+              font-size: 14px;
+            }
+          }
+          .field--name-node-link {
+            display: flex;
+            justify-content: flex-end;
+            a {
+              font-size: 14px;
+              font-weight: 300;
+              padding: 5px 10px;
+              letter-spacing: .02em;
+              text-transform: uppercase;
+              color: #fff;
+              background: #373645;
+              &:hover, :active, :focus {
+                font-size: 14px;
+                font-weight: 300;
+                padding: 5px 10px;
+                letter-spacing: .02em;
+                text-transform: uppercase;
+                color: #fff;
+                background: #373645;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

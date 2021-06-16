@@ -1,0 +1,111 @@
+#block-views-block-our-team-block-1 {
+  width: 100%;
+  margin: 5em auto 0;
+  height: auto;
+  position: relative;
+  padding: 1em;
+  &:before {
+    content: "";
+    border-top: 1px solid grey;
+    position: absolute;
+    top: 0;
+    left: 7%;
+    width: 86.5%;
+  }
+  h2 {
+    text-align: center;
+    text-transform: $up;
+    font-size: 24px;
+    font-weight: 900;
+    color: #373645;
+    letter-spacing: .02em;
+    margin-bottom: 1em;
+    position: absolute;
+    top: -14px;
+    padding: 0 10px;
+    left: 44.5%;
+    background: #fff;
+  }
+  .view-id-our_team {
+    padding-bottom: 5em;
+    width: 100%;
+  }
+  .view-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding-top: 4em;
+  }
+  .views-row {
+    .field--type-image img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 2rem;
+    }
+    .field--name-username {
+      h2 {
+        text-align: center;
+        text-transform: $up;
+        font-size: 22px;
+        font-weight: 700;
+        color: #373645;
+        letter-spacing: .02em;
+        margin-bottom: 0;
+        position: static;
+        padding: 0 10px;
+        background: #fff;
+      }
+    }
+    .field--name-field-position {
+      text-transform: $up;
+      @include text(14px, $weight-light, 18px, $letter-sp-small);
+      @include colors($transparent, #d3d3d3);
+    }
+    .field--name-field-look {
+      margin: 1.5em 0;
+      a {
+        padding: 6px 12px;
+        text-transform: $up;
+        @include text(16px, $weight-light, 22px, $letter-sp-small);
+        @include colors($dark-blue, $white);
+      }
+    }
+    .social-media-links--platforms {
+      width: fit-content;
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      margin: 0 1.5em 0 0;
+      li {
+        margin: 0 8px 0 0;
+        &:last-child {
+          margin-right: 0;
+        }
+        a {
+          padding: 10px 5px 4px;
+          @include text(8px, none, normal, normal);
+          @include colors($light-blue, $white);
+          margin: 0;
+        }
+      }
+    }
+    .grouped {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      .flag-like-flag, .flag-unlike-flag {
+        font-size: 0;
+        padding: 5px 11px 5px 11px;
+        margin-top: 5px;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .flag-unlike-flag {
+        background-image: url("../images/_heart_love_romantic_favorite_like_active-512.png");
+      }
+      .flag-like-flag {
+        background-image: url("../images/flaticon_heart-2-512.png");
+      }
+    }
+  }
+}

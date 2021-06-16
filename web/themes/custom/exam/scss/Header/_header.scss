@@ -1,0 +1,25 @@
+.highlighted {
+  background-image: url("../images/header.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 15em 0 30em;
+  margin-top: -1em;
+  #block-sloganandshortinfo {
+    .field--name-field-header-main-headline {
+      text-transform: $up;
+      @include text(52px, $weight-lesser-medium, 58px, $letter-sp-small);
+      @include colors($transparent, $white);
+    }
+    .field--name-field-header-subheadline {
+      text-transform: $up;
+      @include text(32px, $weight-lesser-medium, 36px, $letter-sp-small);
+      @include colors($transparent, $dark-blue);
+    }
+    .field--name-field-header-paragraph {
+      text-transform: $up;
+      @include text(10px, $weight-light, 18px, $letter-sp-small);
+      @include colors($transparent, $light-blue);
+    }
+  }
+}

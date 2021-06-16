@@ -1,0 +1,108 @@
+.node--type-contacts {
+  #main-wrapper {
+    width: 100%;
+
+    #main {
+      max-width: 1250px;
+      width: 100%;
+      padding: 0;
+      position: relative;
+      #block-exam-page-title{
+        text-align: center;
+        text-transform: $up;
+        font-size: 24px;
+        font-weight: 900;
+        color: #373645;
+        letter-spacing: .02em;
+        margin-bottom: 1em;
+        position: absolute;
+        top: -5em;
+        padding: 0 10px;
+        left: 38%;
+        background: #fff;
+        &:after {
+          content: "";
+          border-bottom: 3px solid grey;
+          width: 2.5em;
+          position: absolute;
+          right: 4.4em;
+        }
+      }
+      .row-offcanvas {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 16em auto 0;
+
+        section {
+          .node--view-mode-full .node__content {
+            display: flex;
+            flex-wrap: wrap;
+            .form-type-textfield {
+              input {
+                border-radius: 0;
+                padding: 15px 16px;
+                height: auto;
+              }
+            }
+            .form-item-message {
+              textarea {
+                height: 16.4em;
+              }
+            }
+            #edit-actions {
+              margin-top: 1em;
+              button {
+                border: none;
+                border-radius: 2px;
+                text-decoration: none;
+                text-transform: $up;
+                padding: 16px 30px;
+                background: #e03114;
+              }
+            }
+            .field--name-field-country {
+              text-transform: $up;
+              @include text(18px, $weight-medium, 22px, $letter-sp-small);
+              @include colors($transparent, #252a2e);
+              margin: 0;
+            }
+            .field--name-field-address, .field--name-field-mobile-phones, .field--name-field-mail {
+              margin: 0;
+              .field__item {
+                margin-top: 5px;
+                a, a:hover, a:active, a:focus {
+                  text-decoration: none;
+                  @include text(14px, 600, 18px, $letter-sp-small);
+                  @include colors($transparent, #252a2e);
+                }
+              }
+            }
+            .field--name-field-mail {
+              margin-bottom: 20px;
+            }
+            .field--name-field-mobile-phones {
+              display: flex;
+              justify-content: flex-start;
+              flex-wrap: wrap;
+              .field__item {
+                padding: 0 5px 0 0;
+                &::after {
+                  content: ", ";
+                }
+                &:last-child {
+                  &::after {
+                    display: none;
+                  }
+                }
+              }
+            }
+            .field--type-iframe iframe {
+              height: 320px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

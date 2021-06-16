@@ -1,0 +1,56 @@
+/* IMPORTS */
+
+//@import url(font-awesome.min.css);
+// variables
+@import "variables";
+// typography
+@import "typography";
+//bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+//material design bootstrap
+//@import "../node_modules/mdbootstrap/scss/mdb-free.scss";
+// barrio
+@import "barrio";
+
+// mixins
+@import "mixins";
+
+//fonts
+@import "fonts/poppins.scss";
+
+//styles for pages block
+@import "pages/pages.scss";
+
+//styles for Navbar block
+@import "Navbar/navbar.scss";
+
+//styles for Header block
+@import "Header/header.scss";
+
+//styles for About block
+@import "About/about.scss";
+
+//styles for Services block
+@import "Services/services.scss";
+
+//styles for Projects block
+@import "Projects/projects.scss";
+
+//styles for Team block
+@import "Team/team.scss";
+
+//styles for News block
+@import "News/news.scss";
+
+//styles for Clients block
+@import "Clients/clients.scss";
+
+//styles for Footer block
+@import "Footer/footer.scss";
+
+//styles for Contacts block
+@import "Contacts/contacts.scss";
+
+//styles for Adaptive block
+@import "Adaptive/adaptive.scss";
+

@@ -1,0 +1,36 @@
+/* MIXINS */
+
+//
+// Alternate buttons
+//
+@each $color,
+$value in $theme-colors {
+    .btn-#{$color} a {
+        @include button-variant($value, $value);
+    }
+}
+
+@each $color,
+$value in $theme-colors {
+    .btn-outline-#{$color} a {
+        @include button-outline-variant($value);
+    }
+}
+@mixin text($font_sizes, $font_weights, $line_height, $letter_spaces) {
+  font-size: $font_sizes;
+  font-weight: $font_weights;
+  line-height: $line_height;
+  letter-spacing: $letter_spaces;
+}
+@mixin colors($back_color, $text_colors) {
+  background: $back_color;
+  color: $text_colors;
+}
+@mixin nodecored($text_trans, $non_decorated:none) {
+  text-decoration: $non_decorated;
+  text-transform: $text_trans;
+}
+@mixin buttons($border, $border_rad) {
+  border: $border;
+  border-radius: $border_rad;
+}

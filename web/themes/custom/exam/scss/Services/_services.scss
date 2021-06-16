@@ -1,0 +1,70 @@
+#block-views-block-services-block-1 {
+  width: 100%;
+  max-width: 1250px;
+  margin: 7em auto 0;
+  position: relative;
+  padding-top: 5em;
+  height: auto;
+  &:before {
+    content: "";
+    border-top: 1px solid grey;
+    position: absolute;
+    top: 0;
+    left: 7%;
+    width: 86.5%;
+  }
+
+  h2 {
+    text-align: center;
+    text-transform: $up;
+    font-size: 24px;
+    font-weight: 900;
+    color: #373645;
+    letter-spacing: .02em;
+    margin-bottom: 1em;
+    position: absolute;
+    top: -14px;
+    padding: 0 10px;
+    left: 44.5%;
+    background: #fff;
+  }
+  .view-content {
+    .views-row {
+      .field--name-field-service-tags {
+        color: #373645;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: .02em;
+        margin-top: 1.5em;
+        margin-bottom: .75em;
+      }
+      .field--type-text-with-summary {
+        color: #d3d3d3;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: .02em;
+        margin-bottom: 2.5em;
+      }
+      .field--name-node-link {
+        background: $transparent;
+        margin-bottom: 2em;
+        a {
+          font-size: 14px;
+          font-weight: 300;
+          padding: 5px 10px;
+          letter-spacing: .02em;
+          text-transform: $up;
+          color: $white;
+          background: #6e9bca;
+          &:hover, :active, :focus {
+            color: $white;
+            background: #6e9bca;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

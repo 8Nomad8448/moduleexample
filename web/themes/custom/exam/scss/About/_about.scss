@@ -1,0 +1,52 @@
+.path-frontpage #block-aboutusblock {
+  width: 100%;
+  max-width: 1250px;
+  margin: 5em auto 0;
+  height: auto;
+  border-top: 5px solid #373645;
+  border-bottom: 5px solid #6e9bca;
+}
+#block-aboutusblock .content .field--name-field-block-title {
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 900;
+  color: #373645;
+  letter-spacing: .02em;
+  padding-top: 6px;
+}
+#block-aboutusblock .content .field--name-body {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 300;
+  color: #dadada;
+  letter-spacing: .02em;
+  height: auto;
+  padding-top: 12px;
+}
+#block-aboutusblock .content .field--name-field-more {
+  text-transform: uppercase;
+  background: transparent;
+  height: auto;
+  padding: 11px 0 0;
+}
+#block-aboutusblock .content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: auto;
+  padding: 10px 0 5px;
+}
+#block-aboutusblock .content .field--name-field-more a {
+  padding: 12px 10px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+  color: #ffffff;
+  background: #6e9bca;
+  letter-spacing: .02em;
+}

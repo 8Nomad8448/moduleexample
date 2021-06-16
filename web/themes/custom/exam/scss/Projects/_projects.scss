@@ -1,0 +1,133 @@
+#block-views-block-projects-block-1 {
+  width: 100%;
+  margin: 5em auto 0;
+  height: auto;
+  position: relative;
+  padding: 1em;
+  &:before {
+    content: "";
+    border-top: 1px solid grey;
+    position: absolute;
+    top: 0;
+    left: 7%;
+    width: 86.5%;
+  }
+  h2 {
+    text-align: center;
+    text-transform: $up;
+    font-size: 24px;
+    font-weight: 900;
+    color: #373645;
+    letter-spacing: .02em;
+    margin-bottom: 1em;
+    position: absolute;
+    top: -14px;
+    padding: 0 10px;
+    left: 44.5%;
+    background: #fff;
+  }
+  .view-id-projects {
+    background-image: url("../images/backgroung_repeat.png");
+    padding-bottom: 5em;
+    width: 100%;
+    nav {
+      .pagination {
+        width: fit-content;
+        margin: 3em auto 0;
+        li a, li a:hover, li a:active, li a:focus {
+          background: $transparent;
+          border: none;
+          border-radius: 50%;
+          color: #787878;
+          font-size: 12px;
+        }
+        .page-link {
+          padding: 0.35rem 0.75rem;
+        }
+        .active span {
+          cursor: pointer;
+          border: none;
+          border-radius: 50%;
+          background: #dddcdd;
+          color: #787878;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .view-content {
+    max-width: 1250px;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding-top: 4em;
+    }
+    .views-row {
+      .layout__region--content {
+        border-bottom: 1px solid #373645;
+        background: #fff;
+      }
+      .field--type-image img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 3rem;
+      }
+      .field--name-field-projects-tags {
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: .02em;
+      }
+      .field--type-text-with-summary {
+        color: #373645;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: .02em;
+        margin-bottom: .5em;
+        p {
+          margin-bottom: 0em;
+        }
+      }
+      .field--name-node-link {
+        background: $transparent;
+        margin-bottom: 1em;
+        a {
+          font-size: 14px;
+          font-weight: 300;
+          padding: 5px 10px;
+          letter-spacing: .02em;
+          text-transform: $up;
+          color: $white;
+          background: #373645;
+          &:hover, :active, :focus {
+            color: $white;
+            background: #373645;
+            text-decoration: none;
+          }
+        }
+      }
+      &:nth-child(2n-1) {
+        .field--name-field-projects-tags {
+          color: #1bbc9b;
+        }
+    }
+      &:nth-child(2n) {
+        .field--name-field-projects-tags {
+          color: #9b58b5;
+        }
+      }
+      &:nth-child(4n-1) {
+        .field--name-field-projects-tags {
+          color: #e85243;
+        }
+      }
+      &:nth-child(4n) {
+        .field--name-field-projects-tags {
+          color: #28a9e0;
+          &:after {
+            content: " project";
+          }
+        }
+      }
+  }
+}

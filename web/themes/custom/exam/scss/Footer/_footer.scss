@@ -1,0 +1,53 @@
+.has-featured-top  #page .site-footer {
+  margin-top: 7em;
+  background: #373645!important;
+  .container {
+    max-width: 1250px;
+    width: 100%;
+    .region-footer-fifth {
+      padding: 2em 0;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      #block-blockfootereft {
+        padding: 0 14px;
+        text-align: center;
+        height: 4em;
+        background: $dark-blue;
+        .text-formatted p{
+          @include text(28px, $weight-medium, 22px, $letter-sp-small);
+          @include colors($transparent, $light-blue);
+          margin-bottom: 0;
+          margin-top: .6em;
+        }
+        .field--name-field-footer-subtitle {
+          @include text(12px, $weight-light, 16px, $letter-sp-small);
+          @include colors($transparent, $grey-light);
+          margin-top: .25em;
+        }
+      }
+      #block-blockfooterright {
+        padding: 0 10px;
+        .social-media-links--platforms {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          margin: 0;
+          margin-top: 1em;
+          li {
+            margin: 0 8px 0 0;
+            &:last-child {
+              margin-right: 0;
+            }
+            a {
+              padding: 10px 5px 4px;
+              @include text(8px, none, normal, normal);
+              @include colors($light-blue, $white);
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
