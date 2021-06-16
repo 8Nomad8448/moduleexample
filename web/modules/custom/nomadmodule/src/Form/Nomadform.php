@@ -36,10 +36,6 @@ class Nomadform extends FormBase {
     $form ['submit'] = [
       '#type' => 'submit',
       '#value' => t('Add cat'),
-      '#ajax' => [
-        'callback' => '::ajaxSubmitCallback',
-        'event' => 'click',
-      ],
     ];
     return $form;
   }
