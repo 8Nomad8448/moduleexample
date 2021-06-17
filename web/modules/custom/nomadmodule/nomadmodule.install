@@ -1,0 +1,42 @@
+<?php
+function nomadmodule_schema() {
+  $schema['nomadmodule'] = [
+    'description' => 'Stores email, timestamp, nid and uid for nomadmodule',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for the record.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => "Name of the user's cat.",
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'mail' => [
+        'description' => "User\'s email address.",
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'image' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "Image of the user's cat.",
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp for when nomdadmodule was created.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}
