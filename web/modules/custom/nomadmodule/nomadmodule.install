@@ -17,7 +17,7 @@ function nomadmodule_schema() {
         'default' => '',
       ],
       'mail' => [
-        'description' => "User\'s email address.",
+        'description' => "User's email address.",
         'type' => 'varchar',
         'length' => 64,
         'not null' => FALSE,
@@ -30,9 +30,10 @@ function nomadmodule_schema() {
         'description' => "Image of the user's cat.",
       ],
       'created' => [
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'default' => '',
         'description' => 'Timestamp for when nomdadmodule was created.',
       ],
     ],

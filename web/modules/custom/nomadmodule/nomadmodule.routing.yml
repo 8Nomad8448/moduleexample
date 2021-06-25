@@ -1,7 +1,7 @@
 nomadmodule.content:
   path: '/nomadmodule/cats'
   defaults:
-     _form: '\Drupal\nomadmodule\Form\Nomadform'
+     _controller: '\Drupal\nomadmodule\Controller\NomadController::report'
      _title: 'Hello! You can add here a photo of your cat.'
   requirements:
      _permission: 'access content'
