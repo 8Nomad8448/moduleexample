@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\nomadmodule\Form\Nomadform.
- */
-
 namespace Drupal\nomadmodule\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;
@@ -12,23 +7,24 @@ use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\file\Entity\File;
 use Drupal\Core\Form\FormStateInterface;
-/**
- * Provides an nomadmodule name form.
- */
 
+/**
+ * Contains form created in order to create list of cats, taking part in event.
+ */
 class Nomadform extends FormBase {
 
   /**
-    *(@inheritdoc).
-    */
+   * Contains form created in order to create list of cats for in event.
+   */
   public function getFormId() {
     return 'nomadmodule_name_form';
   }
+
   /**
-   * (@inheritdoc).
+   * Using build form function to create.
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form ['name'] = [
+    $form['name'] = [
       '#title' => t("Your cat's name:"),
       '#type' => 'textfield',
       '#size' => 32,
@@ -43,7 +39,7 @@ class Nomadform extends FormBase {
         ],
       ],
     ];
-    $form ['email'] = [
+    $form['email'] = [
       '#title' => t('Your email:'),
       '#type' => 'email',
       '#required' => TRUE,
@@ -57,13 +53,13 @@ class Nomadform extends FormBase {
         ],
       ],
     ];
-    $form ['image'] = [
+    $form['image'] = [
       '#title' => t('Add your pet image'),
       '#type' => 'managed_file',
       '#upload_validators' => [
         'file_validate_extensions' => ['png jpg jpeg'],
         'file_validate_size' => [2097152],
-      '#required' => TRUE,
+        '#required' => TRUE,
       ],
       '#description' => t("Your pet image size must be less than 2MB."),
       '#upload_location' => 'public://photos',
@@ -73,7 +69,7 @@ class Nomadform extends FormBase {
       '#markup' => '<div id="form-system-messages"></div>',
       '#weight' => -100,
     ];
-    $form ['submit'] = [
+    $form['submit'] = [
       '#type' => 'submit',
       '#value' => t('Add cat'),
       '#ajax' => [
@@ -88,43 +84,48 @@ class Nomadform extends FormBase {
   }
 
   /**
-   * (@inheritdoc).
+   * Using standart structure of build form to create validation.
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $value = $form_state->getValue('name');
     $emailvalue = $form_state->getValue('email');
-    if (!preg_match('/[A-Za-z]/', $value) || strlen($value)<2 || strlen($value)>32) {
-      $form_state->setErrorByName ('name', t('The name %name is not valid.', array('%name' => $value)));
+    if (!preg_match('/[A-Za-z]/', $value) || strlen($value) < 2 || strlen($value) > 32) {
+      $form_state->setErrorByName('name', t('The name %name is not valid.', ['%name' => $value]));
     }
-    if (filter_var($emailvalue, FILTER_VALIDATE_EMAIL) && preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue)) {
-      $form_state->setErrorByName ('email', t('The email %email is not valid.', array('%email' => $emailvalue)));
-    } else {
+    if (filter_var($emailvalue, FILTER_VALIDATE_EMAIL) &&
+      preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue)) {
+      $form_state->setErrorByName('email', t('The email %email is not valid.', ['%email' => $emailvalue]));
+    }
+    else {
       $this->messenger()->deleteAll();
     }
   }
 
   /**
-   * (@inheritdoc).
+   * Creating ajax validation for name field of form.
    */
   public function validateNameAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     $value = $form_state->getValue('name');
     if ($value == '') {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>The name field is required.
+      $response->addCommand(new HtmlCommand('#form-system-messages',
+        "<div class='alert alert-dismissible fade show alert-danger'>The name field is required.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
     </div>"));
     }
     elseif (!preg_match('/^[A-Za-z]*$/', $value) || strlen($value) < 2 || strlen($value) > 32) {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>The name $value is not valid.
+      $response->addCommand(new HtmlCommand('#form-system-messages',
+        "<div class='alert alert-dismissible fade show alert-danger'>The name $value is not valid.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
     </div>"));
     }
     else {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-success'>The name $value is correct.
+      $response->addCommand(new HtmlCommand('#form-system-messages',
+        "<div class='alert alert-dismissible fade show alert-success'>The name $value is correct.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
@@ -133,25 +134,33 @@ class Nomadform extends FormBase {
     }
     return $response;
   }
+
+  /**
+   * Creating ajax validation for email field of form.
+   */
   public function validateEmailAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     $emailvalue = $form_state->getValue('email');
     if ($emailvalue == '') {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>Email field is required.
+      $response->addCommand(new HtmlCommand('#form-system-messages', "
+<div class='alert alert-dismissible fade show alert-danger'>Email field is required.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
     </div>"));
     }
-    elseif (!preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue) && filter_var($emailvalue, FILTER_VALIDATE_EMAIL)) {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-success'>Email $emailvalue is correct.
+    elseif (!preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue) &&
+      filter_var($emailvalue, FILTER_VALIDATE_EMAIL)) {
+      $response->addCommand(new HtmlCommand('#form-system-messages',
+        "<div class='alert alert-dismissible fade show alert-success'>Email $emailvalue is correct.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
 </div>"));
     }
     else {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-danger'>Email $emailvalue is not valid.
+      $response->addCommand(new HtmlCommand('#form-system-messages',
+        "<div class='alert alert-dismissible fade show alert-danger'>Email $emailvalue is not valid.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
@@ -160,8 +169,9 @@ class Nomadform extends FormBase {
     }
     return $response;
   }
+
   /**
-   * {@inheritdoc}
+   * Adding ajax form submit for form.
    */
   public function ajaxSubmitCallback(array &$form, FormStateInterface $form_state) {
     $ajax_response = new AjaxResponse();
@@ -180,7 +190,7 @@ class Nomadform extends FormBase {
   }
 
   /**
-   *  (@inheritdoc).
+   * Adding form submit according to build_form structure.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $image = $form_state->getValue('image');
@@ -199,5 +209,5 @@ class Nomadform extends FormBase {
 
     \Drupal::messenger()->addMessage($this->t('Form Submitted Successfully'), 'status', TRUE);
   }
-}
 
+}
