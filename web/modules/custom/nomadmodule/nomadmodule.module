@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * File for hooks implementing.
+ */
+
+/**
+ * Implementing hook_theme().
+ */
+function nomadmodule_theme($existing, $type, $theme, $path) {
+  return [
+    'nomadmodule_twig' => [
+      'variables' => ['items' => [], 'title' => '', 'markup' => '', 'form' => [],],
+    ]
+  ];
+}

@@ -10,10 +10,8 @@ namespace Drupal\nomadmodule\Form;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Form\FormBase;
+use Drupal\file\Entity\File;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\file\entity\File;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 /**
  * Provides an nomadmodule name form.
  */
@@ -21,18 +19,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Nomadform extends FormBase {
 
   /**
-   * Provides a class for obtaining system time.
-   * @var Drupal\Component\Datetime\Time
-   */
-  protected $currentTime;
-
-  /**
-   *(@inheritdoc).
-   */
+    *(@inheritdoc).
+    */
   public function getFormId() {
     return 'nomadmodule_name_form';
   }
-
   /**
    * (@inheritdoc).
    */
@@ -72,8 +63,9 @@ class Nomadform extends FormBase {
       '#upload_validators' => [
         'file_validate_extensions' => ['png jpg jpeg'],
         'file_validate_size' => [2097152],
+      '#required' => TRUE,
       ],
-      '#description' => t("Your pet image size must be less than 2MB. Only files with the following extensions are allowed: png, jpg, jpeg."),
+      '#description' => t("Your pet image size must be less than 2MB."),
       '#upload_location' => 'public://photos',
       '#required' => TRUE,
     ];
@@ -98,24 +90,16 @@ class Nomadform extends FormBase {
   /**
    * (@inheritdoc).
    */
-  public static function create(ContainerInterface $container) {
-    $instance = parent::create($container);
-    $instance->currentTime = $container->get('datetime.time');
-
-    return $instance;
-  }
-
-  /**
-   * (@inheritdoc).
-   */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $value = $form_state->getValue('name');
     $emailvalue = $form_state->getValue('email');
-    if (!preg_match('/^[A-Za-z]*$/', $value) || strlen($value)<2 || strlen($value)>32) {
+    if (!preg_match('/[A-Za-z]/', $value) || strlen($value)<2 || strlen($value)>32) {
       $form_state->setErrorByName ('name', t('The name %name is not valid.', array('%name' => $value)));
     }
     if (filter_var($emailvalue, FILTER_VALIDATE_EMAIL) && preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue)) {
       $form_state->setErrorByName ('email', t('The email %email is not valid.', array('%email' => $emailvalue)));
+    } else {
+      $this->messenger()->deleteAll();
     }
   }
 
@@ -140,12 +124,12 @@ class Nomadform extends FormBase {
     </div>"));
     }
     else {
-      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class
-='alert alert-dismissible fade show alert-success'>The name $value is correct.
+      $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-success'>The name $value is correct.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
     </button>
 </div>"));
+      $this->messenger()->deleteAll();
     }
     return $response;
   }
@@ -159,7 +143,7 @@ class Nomadform extends FormBase {
     </button>
     </div>"));
     }
-    elseif (filter_var($emailvalue, FILTER_VALIDATE_EMAIL) && !preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue)) {
+    elseif (!preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue) && filter_var($emailvalue, FILTER_VALIDATE_EMAIL)) {
       $response->addCommand(new HtmlCommand('#form-system-messages', "<div class='alert alert-dismissible fade show alert-success'>Email $emailvalue is correct.
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span aria-hidden='true'>×</span>
@@ -172,6 +156,7 @@ class Nomadform extends FormBase {
       <span aria-hidden='true'>×</span>
     </button>
     </div>"));
+      $this->messenger()->deleteAll();
     }
     return $response;
   }
@@ -198,26 +183,21 @@ class Nomadform extends FormBase {
    *  (@inheritdoc).
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    /* Fetch the array of the file stored temporarily in database */
     $image = $form_state->getValue('image');
-
-    /* Load the object of the file by it's fid */
-    $file = File::load( $image[0] );
-
-    /* Set the status flag permanent of the file object */
+    $file = File::load($image[0]);
     $file->setPermanent();
-
-    /* Save the file in database */
     $file->save();
     $data = \Drupal::service('database')->insert('nomadmodule')
-      ->fields ([
+      ->fields([
         'name' => $form_state->getValue('name'),
-        'mail' => $form_state->getValue('email'),
+        'email' => $form_state->getValue('email'),
         'image' => $form_state->getValue('image')[0],
-        'created' => date('d/m/Y H:i:s', $this->currentTime->getCurrentTime() + 3 * 60 * 60),
+        'created' => date('d/m/Y H:i:s', time() + 3 * 60 * 60),
       ])
+
       ->execute();
 
     \Drupal::messenger()->addMessage($this->t('Form Submitted Successfully'), 'status', TRUE);
   }
 }
+
