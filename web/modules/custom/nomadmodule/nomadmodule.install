@@ -2,11 +2,11 @@
 
 /**
  * @file
- * File for hooks implementing.
+ * File creating shema for databaase table rows markup.
  */
 
 /**
- * Implementing hook for creating twig markup.
+ * Implementing schema and creating fields in dabase table.
  */
 function nomadmodule_schema() {
   $schema['nomadmodule'] = [
