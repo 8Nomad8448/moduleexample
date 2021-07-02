@@ -43,7 +43,7 @@ class NomadController extends ControllerBase {
     // Create connection, select the specific fields for the output.
     $db = \Drupal::service('database');
     $select = $db->select('nomadmodule', 'r');
-    $select->fields('r', ['name', 'mail', 'image', 'created']);
+    $select->fields('r', ['name', 'email', 'image', 'created']);
     $select->orderBy('created', 'DESC');
     $entries = $select->execute()->fetchall();
     return $entries;
@@ -64,7 +64,7 @@ class NomadController extends ControllerBase {
       t('image'),
       t('created'),
     ];
-    $rows = json_decode(json_encode($contents),true);
+    $rows = json_decode(json_encode($contents), TRUE);
     foreach ($rows as $key => $entry) {
       $imgfile = File::load($entry['image']);
       $uri = $imgfile->getFileUri();

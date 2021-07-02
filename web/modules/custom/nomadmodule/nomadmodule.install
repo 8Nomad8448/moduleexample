@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * @file This file working after first module install.
+ */
+
+/**
+ * Adding schema function to create database markup.
+ */
 function nomadmodule_schema() {
   $schema['nomadmodule'] = [
     'description' => 'Stores email, timestamp, nid and uid for nomadmodule',
@@ -16,7 +24,7 @@ function nomadmodule_schema() {
         'not null' => FALSE,
         'default' => '',
       ],
-      'mail' => [
+      'email' => [
         'description' => "User's email address.",
         'type' => 'varchar',
         'length' => 64,

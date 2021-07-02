@@ -222,7 +222,7 @@ class Nomadform extends FormBase {
     $data = \Drupal::service('database')->insert('nomadmodule')
       ->fields([
         'name' => $form_state->getValue('name'),
-        'mail' => $form_state->getValue('email'),
+        'email' => $form_state->getValue('email'),
         'image' => $form_state->getValue('image')[0],
         'created' => date('d/m/Y H:i:s', $this->currentTime->getCurrentTime() + 3 * 60 * 60),
       ])
