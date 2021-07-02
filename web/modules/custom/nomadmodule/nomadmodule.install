@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * @file
+ * File for hooks implementing.
+ */
+
+/**
+ * Implementing hook for creating twig markup.
+ */
 function nomadmodule_schema() {
   $schema['nomadmodule'] = [
     'description' => "Stores all the fields of user's pets info, and contact information",
@@ -24,7 +33,6 @@ function nomadmodule_schema() {
         'default' => '',
       ],
       'image' => [
-        'description' => "User's pet image.",
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,

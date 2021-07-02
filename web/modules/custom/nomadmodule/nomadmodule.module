@@ -6,12 +6,17 @@
  */
 
 /**
- * Implementing hook_theme().
+ * Implementing hook for creating twig markup.
  */
 function nomadmodule_theme($existing, $type, $theme, $path) {
   return [
     'nomadmodule_twig' => [
-      'variables' => ['items' => [], 'title' => '', 'markup' => '', 'form' => [],],
-    ]
+      'variables' => [
+        'items' => [],
+        'title' => '',
+        'markup' => '',
+        'form' => [],
+      ],
+    ],
   ];
 }
