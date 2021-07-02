@@ -1,11 +1,12 @@
 <?php
 
 /**
- * @file This file working after first module install.
+ * @file
+ * File for hooks implementing.
  */
 
 /**
- * Adding schema function to create database markup.
+ * Implementing hook for creating twig markup.
  */
 function nomadmodule_schema() {
   $schema['nomadmodule'] = [
