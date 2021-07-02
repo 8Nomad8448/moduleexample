@@ -1,0 +1,6 @@
+cats-style:
+  version: VERSION
+  css:
+    component:
+      css/cats.css: {}
+
