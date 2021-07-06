@@ -16,6 +16,7 @@ function nomadmodule_theme($existing, $type, $theme, $path) {
         'title' => '',
         'markup' => '',
         'form' => [],
+        'root' => [],
       ],
     ],
   ];

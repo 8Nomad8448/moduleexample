@@ -1,4 +1,5 @@
 {{ attach_library('nomadmodule/cats-style') }}
+{{ attach_library('core/drupal.dialog.ajax') }}
 
 <div class="row">
   <h5>{{ markup }}</h5>
@@ -23,6 +24,10 @@
         <br>
         <p>{{ "Created:"|trans }}</p>
         <p class="cats_created"> {{ item.created }}</p>
+        {% if user.hasPermission('administer nodes') %}
+          <br>
+          <span class="rm_btn"><a href="/admin/nomadmodule/delete/{{ item.id }}?destination={{ root }}" class="rm_button use-ajax" data-dialog-type="modal">{{ "remove"|trans }}</a><a href="{{ item.id }}" class="edit_button">{{ "edit"|trans }}</a></span>
+        {% endif %}
       </div>
     </div>
   </div>

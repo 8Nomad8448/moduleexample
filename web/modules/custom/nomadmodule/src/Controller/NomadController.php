@@ -55,22 +55,23 @@ class NomadController extends ControllerBase {
     // Added function to create markup and render information.
     $content = [];
     $contents = $this->load();
-    $rows = json_decode(json_encode($contents),true);
+    $rows = json_decode(json_encode($contents), TRUE);
     foreach ($rows as $key => $entry) {
       $imgfile = File::load($entry['image']);
       $uri = $imgfile->getFileUri();
       $url = file_url_transform_relative(Url::fromUri(file_create_url($uri))->toString());
       $rows[$key]['image'] = $url;
     }
-
     $content['form'] = $this->myform();
-
+    $value = $this->getDestinationArray();
+    $dest = $value['destination'];
     return [
       '#theme' => 'nomadmodule_twig',
       '#form' => $content['form'],
       '#items' => $rows,
       '#title' => $this->t("Hello! You can add here a photo of your cat."),
       '#markup' => $this->t('Below is a list af all pets that taking part in competition of domestic cats'),
+      '#root' => $dest,
     ];
   }
 

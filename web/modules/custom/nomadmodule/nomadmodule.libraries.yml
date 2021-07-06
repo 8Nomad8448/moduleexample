@@ -3,4 +3,7 @@ cats-style:
   css:
     component:
       css/cats.css: {}
-
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.dialog.ajax

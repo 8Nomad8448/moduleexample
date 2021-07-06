@@ -5,3 +5,10 @@ nomadmodule.content:
      _title: 'Hello! You can add here a photo of your cat.'
   requirements:
      _permission: 'access content'
+
+nomadmodule.deleteform:
+  path: '/admin/nomadmodule/delete/{id}'
+  defaults:
+    _form: '\Drupal\nomadmodule\Form\NomadConfirmDel'
+  requirements:
+    _permission: 'administer site configuration'

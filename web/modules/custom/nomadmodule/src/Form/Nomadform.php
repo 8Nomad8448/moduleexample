@@ -93,7 +93,7 @@ class Nomadform extends FormBase {
       $form_state->setErrorByName('name', t('The name %name is not valid.', ['%name' => $value]));
     }
     if (filter_var($emailvalue, FILTER_VALIDATE_EMAIL) &&
-      preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue)) {
+      preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\]/', $emailvalue)) {
       $form_state->setErrorByName('email', t('The email %email is not valid.', ['%email' => $emailvalue]));
     }
     else {
@@ -149,7 +149,7 @@ class Nomadform extends FormBase {
     </button>
     </div>"));
     }
-    elseif (!preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\0-9]/', $emailvalue) &&
+    elseif (!preg_match('/[#$%^&*()+=!\[\]\';,\/{}|":<>?~\\\\]/', $emailvalue) &&
       filter_var($emailvalue, FILTER_VALIDATE_EMAIL)) {
       $response->addCommand(new HtmlCommand('#form-system-messages',
         "<div class='alert alert-dismissible fade show alert-success'>Email $emailvalue is correct.
