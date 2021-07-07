@@ -18,7 +18,7 @@
 .path-nomadmodule .dboutput_wrapper {
   margin: 1em 0;
   padding: 1em .6em;
-  border-bottom: 2px solid #42BA7BFF;
+  border-bottom: 2px solid #42ba7bff;
 }
 .path-nomadmodule .dboutput_wrapper:last-child {
   border: none;
@@ -117,7 +117,9 @@
   -ms-flex-pack: start;
   justify-content: flex-start;
 }
-.path-nomadmodule .cats .cats_name, .path-nomadmodule .cats .cats_email, .path-nomadmodule .cats .cats_created {
+.path-nomadmodule .cats .cats_name,
+.path-nomadmodule .cats .cats_email,
+.path-nomadmodule .cats .cats_created {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,7 +130,6 @@
   justify-content: flex-end;
   font-weight: normal;
 }
-
 .path-nomadmodule .cats_created {
   font-style: italic;
 }
@@ -137,25 +138,81 @@
   width: 100%;
   height: auto;
 }
+.path-nomadmodule .ui-dialog {
+  position: fixed;
+  z-index: 101;
+  border-radius: 8px;
+}
+.path-nomadmodule .ui-dialog .ui-dialog-titlebar {
+  color: #fff;
+  background: #8888ff;
+  border-radius: 5px;
+}
+.path-nomadmodule .ui-dialog .confirm-delete-form {
+  margin-top: 1rem;
+}
+.path-nomadmodule .ui-dialog .confirm-delete-form .form-actions {
+  margin-top: 1rem;
+}
+.path-nomadmodule .ui-dialog .confirm-delete-form .form-actions .form-submit {
+  color: #fff;
+  background: #ac0606;
+  transition: .6s;
+  transition-timing-function: ease-in-out;
+}
+.path-nomadmodule .ui-dialog .confirm-delete-form .form-actions .form-submit:hover {
+  color: #fff;
+  background: #680303;
+  transition: .6s;
+  transition-timing-function: ease-in-out;
+}
+.path-nomadmodule .ui-dialog .ui-dialog-buttonpane .form-actions .button {
+  color: #fff;
+  background: #5f9e53;
+  transition: .6s;
+  transition-timing-function: ease-in-out;
+}
+.path-nomadmodule .ui-dialog .ui-dialog-buttonpane .form-actions .button:hover {
+  color: #fff;
+  background: #8888ff;
+  transition: .6s;
+  transition-timing-function: ease-in-out;
+}
+.path-nomadmodule .ui-dialog .ui-dialog-titlebar-close {
+  display: none;
+}
+.path-nomadmodule .ui-dialog .button:hover,
+.path-nomadmodule .ui-dialog .button:focus,
+.path-nomadmodule .ui-dialog .button:active {
+  outline: none;
+  box-shadow: none;
+}
 @media (max-width: 991px) {
   .path-nomadmodule .cats {
     margin-top: 1em;
   }
 }
+@media (max-width: 798px) {
+  .path-nomadmodule .cats .rm_btn {
+    width: 60%;
+  }
+}
+@media (max-width: 630px) {
+  .path-nomadmodule .cats .rm_btn {
+    width: 60%;
+  }
+}
 @media (max-width: 480px) {
-
   .path-nomadmodule .cats .rm_btn {
     width: 60%;
   }
 }
 @media (max-width: 420px) {
-
   .path-nomadmodule .cats .rm_btn {
     width: 80%;
   }
 }
 @media (max-width: 360px) {
-
   .path-nomadmodule .cats .rm_btn {
     width: 100%;
   }

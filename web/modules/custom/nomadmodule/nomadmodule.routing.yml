@@ -12,3 +12,10 @@ nomadmodule.deleteform:
     _form: '\Drupal\nomadmodule\Form\NomadConfirmDel'
   requirements:
     _permission: 'administer site configuration'
+
+nomadmodule.updateform:
+  path: '/admin/nomadmodule/update/{id}'
+  defaults:
+    _form: '\Drupal\nomadmodule\Form\Nomadformupdate'
+  requirements:
+    _permission: 'administer site configuration'

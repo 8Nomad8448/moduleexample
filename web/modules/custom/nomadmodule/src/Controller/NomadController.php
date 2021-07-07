@@ -19,7 +19,7 @@ class NomadController extends ControllerBase {
   protected $formbuild;
 
   /**
-   * {@inheritdoc}
+   * Using form-builder to create a from pulled with dependency injection.
    */
   public static function create(ContainerInterface $container) {
     $instance = parent::create($container);

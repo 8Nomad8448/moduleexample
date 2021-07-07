@@ -26,7 +26,10 @@
         <p class="cats_created"> {{ item.created }}</p>
         {% if user.hasPermission('administer nodes') %}
           <br>
-          <span class="rm_btn"><a href="/admin/nomadmodule/delete/{{ item.id }}?destination={{ root }}" class="rm_button use-ajax" data-dialog-type="modal">{{ "remove"|trans }}</a><a href="{{ item.id }}" class="edit_button">{{ "edit"|trans }}</a></span>
+          <span class="rm_btn">
+            <a href="/admin/nomadmodule/delete/{{ item.id }}?destination={{ root }}" class="rm_button use-ajax" data-dialog-type="modal">{{ "remove"|trans }}</a>
+            <a href="/admin/nomadmodule/update/{{ item.id }}?destination={{ root }}" class="edit_button">{{ "edit"|trans }}</a>
+          </span>
         {% endif %}
       </div>
     </div>

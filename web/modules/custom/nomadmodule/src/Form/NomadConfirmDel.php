@@ -20,7 +20,7 @@ class NomadConfirmDel extends ConfirmFormBase {
   protected $id;
 
   /**
-   * {@inheritdoc}
+   * Using build form function to get id from url by slug.
    */
   public function buildForm(array $form, FormStateInterface $form_state, string $id = NULL) {
     $this->id = $id;
@@ -28,9 +28,12 @@ class NomadConfirmDel extends ConfirmFormBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Submit delete function, to confirm delete of the selected row.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    // Creatin database connection and select all the images from database
+    // in order to create check(count) how many rows using image with same file
+    // id.
     $db = \Drupal::service('database');
     $select = $db->select('nomadmodule', 'r');
     $select->condition('id', $this->id);
@@ -45,6 +48,8 @@ class NomadConfirmDel extends ConfirmFormBase {
       $select->fields('r', ['image']);
       $check = $select->execute()->fetchAll();
       $check = count($check);
+      // If current fid used in table more than once than deleting only row but
+      // not managed file and it's dependencies.
       if ($check == 1) {
         $filemanaged->delete();
       }
@@ -59,24 +64,24 @@ class NomadConfirmDel extends ConfirmFormBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Contains form created machine id.
    */
   public function getFormId() : string {
     return "confirm_delete_form";
   }
 
   /**
-   * {@inheritdoc}
+   * Function for return to module main page after cancel deletion of pet.
    */
   public function getCancelUrl() {
     return new Url('nomadmodule.content');
   }
 
   /**
-   * {@inheritdoc}
+   * Returns text that will be seen by admin when deleting row.
    */
   public function getQuestion() {
-    return $this->t('Do you want to delete this member of event?');
+    return $this->t('Do you want to delete cat?');
   }
 
 }
