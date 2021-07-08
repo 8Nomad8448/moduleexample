@@ -137,6 +137,7 @@
 .path-nomadmodule .cats_image img {
   width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 .path-nomadmodule .ui-dialog {
   position: fixed;
