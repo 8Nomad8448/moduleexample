@@ -78,12 +78,12 @@ class Nomadformupdate extends FormBase {
     ];
     $form['submit'] = [
       '#type' => 'submit',
+      '#button_type' => 'primary',
       '#value' => t('Edit'),
     ];
     $form['cancel'] = [
       '#type' => 'submit',
       '#value' => t('Cancel'),
-      '#button_type' => 'primary',
       '#attributes' => [
         'onClick' => 'javascript:window.history.go(-1); return false;',
       ],
@@ -184,7 +184,7 @@ class Nomadformupdate extends FormBase {
         'name' => $form_state->getValue('name'),
         'email' => $form_state->getValue('email'),
         'image' => $form_state->getValue('image')[0],
-        'created' => date('d/m/Y H:i:s', time() + 3 * 60 * 60),
+        'created' => date('d/m/Y H:i:s', time()),
       ]);
     $query->condition('id', $this->id);
     $query->execute();

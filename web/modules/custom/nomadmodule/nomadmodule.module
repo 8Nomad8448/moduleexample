@@ -19,5 +19,17 @@ function nomadmodule_theme($existing, $type, $theme, $path) {
         'root' => [],
       ],
     ],
+    'nomadmodule_admin_cat_list' => [
+      'variables' => [
+        'title' => '',
+        'markup' => '',
+        'form' => [],
+      ],
+    ],
+    'nomadmodule_admin_modal' => [
+      'variables' => [
+        'markup' => '',
+      ],
+    ],
   ];
 }

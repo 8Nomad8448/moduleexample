@@ -19,3 +19,10 @@ nomadmodule.updateform:
     _form: '\Drupal\nomadmodule\Form\Nomadformupdate'
   requirements:
     _permission: 'administer site configuration'
+
+nomadmodule.cat_list:
+  path: '/admin/structure/cat_list'
+  defaults:
+    _controller: 'Drupal\nomadmodule\Controller\NomadadminController::report'
+  requirements:
+    _permission: 'administer site configuration'

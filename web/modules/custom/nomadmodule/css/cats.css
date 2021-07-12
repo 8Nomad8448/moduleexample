@@ -1,39 +1,100 @@
-.path-nomadmodule h5 {
+h5 {
   padding: 0 15px;
 }
-
-.path-nomadmodule .nomadmodule-name-form .btn-primary {
+/*
+========= Admin modal styles
+*/
+#myModal .modal-content {
+  padding: 0 0 20px 0;
+  border-radius: 5px;
+}
+.modal-content h3 {
+  padding: 15px;
+  margin: 0;
+  color: #fff;
+  background: #b4ccfb;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.modal-content p {
+  margin: 1em 0;
+  padding: 15px;
+  font-style: italic;
+}
+.modal-content .close {
+  color: #fff;
+  border-radius: 5px;
+}
+.path-admin .ui-dialog {
+  position: fixed;
+  z-index: 101;
+  border-radius: 8px;
+  width: 30%;
+}
+.path-admin .ui-dialog .ui-dialog-titlebar {
+  background: #6c5aff;
+}
+.path-admin .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .button--primary {
+  background: #5b67f9;
+  color: #fff;
+  transition: .6s;
+  transition-timing-function: ease-in-out;
+}
+/*
+========= Admin table styles
+*/
+tr td .image-style-medium {
+  border-radius: 8px;
+}
+table tr {
+  border-bottom: 1px solid #a2afe3;
+}
+#myBtn {
+  z-index: 0;
+  margin-top: 30px;
+}
+/*
+========= User form styles
+*/
+/*
+--------- Buttons
+*/
+.nomadmodule-name-form .btn-primary {
   background-color: #5f9e53;
   border-color: #5f9e53;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .nomadmodule-name-form .btn-primary:hover {
+.nomadmodule-name-form .btn-primary:hover {
   background-color: #4a00ff;
   border-color: #4a00ff;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-
-.path-nomadmodule .dboutput_wrapper {
+/*
+--------- Wrapper and borders
+*/
+.dboutput_wrapper {
   margin: 1em 0;
   padding: 1em .6em;
   border-bottom: 2px solid #42ba7bff;
 }
-.path-nomadmodule .dboutput_wrapper:last-child {
+.dboutput_wrapper:last-child {
   border: none;
 }
-
-.path-nomadmodule .region-featured-top div:nth-child(2) {
+/*
+--------- Regions blocks and elements style
+*/
+.region-featured-top div:nth-child(2) {
   width: 100%;
   margin: .5em 1.65em;
 }
 
-.path-nomadmodule #edit-image-upload {
+#edit-image-upload {
   padding-bottom: 2.25rem;
 }
 
-.path-nomadmodule .cats {
+.cats {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,21 +113,21 @@
   align-items: center;
   -webkit-align-items: flex-start;
 }
-.path-nomadmodule .cats p {
+.cats p {
   font-weight: bold;
 }
-.path-nomadmodule .cats div {
+.cats div {
   width: 100%;
   height: 100%;
 }
-.path-nomadmodule .cats .rm_btn {
+.cats .rm_btn {
   display: flex;
   width: 45%;
   align-self: flex-end;
   justify-content: space-between;
   margin-top: auto;
 }
-.path-nomadmodule .cats .rm_btn .rm_button {
+.cats .rm_btn .rm_button {
   background: #de0321;
   color: #fff;
   padding: .5em 1em;
@@ -75,14 +136,14 @@
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .cats .rm_btn .rm_button:hover {
+.cats .rm_btn .rm_button:hover {
   background: #902a38;
   color: #fff;
   text-decoration: none;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .cats .rm_btn .edit_button {
+.cats .rm_btn .edit_button {
   background: blue;
   color: #fff;
   padding: .5em 1em;
@@ -91,14 +152,14 @@
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .cats .rm_btn .edit_button:hover {
+.cats .rm_btn .edit_button:hover {
   background: #191988;
   color: #fff;
   text-decoration: none;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .cats div {
+.cats div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,9 +178,9 @@
   -ms-flex-pack: start;
   justify-content: flex-start;
 }
-.path-nomadmodule .cats .cats_name,
-.path-nomadmodule .cats .cats_email,
-.path-nomadmodule .cats .cats_created {
+.cats .cats_name,
+.cats .cats_email,
+.cats .cats_created {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,90 +191,134 @@
   justify-content: flex-end;
   font-weight: normal;
 }
-.path-nomadmodule .cats_created {
+.cats_created {
   font-style: italic;
 }
 
-.path-nomadmodule .cats_image img {
+.cats_image img {
   width: 100%;
   height: auto;
+  border-radius: 8px;
 }
-.path-nomadmodule .ui-dialog {
+/*
+========= User form modal styles
+*/
+.ui-dialog {
   position: fixed;
   z-index: 101;
   border-radius: 8px;
+  width: 30%!important;
+  text-align: center;
 }
-.path-nomadmodule .ui-dialog .ui-dialog-titlebar {
+.ui-dialog .ui-dialog-titlebar {
   color: #fff;
   background: #8888ff;
   border-radius: 5px;
 }
-.path-nomadmodule .ui-dialog .confirm-delete-form {
+.ui-dialog .confirm-delete-form {
   margin-top: 1rem;
 }
-.path-nomadmodule .ui-dialog .confirm-delete-form .form-actions {
+.ui-dialog .confirm-delete-form .form-actions {
   margin-top: 1rem;
 }
-.path-nomadmodule .ui-dialog .confirm-delete-form .form-actions .form-submit {
+.ui-dialog .confirm-delete-form .form-actions .form-submit {
   color: #fff;
   background: #ac0606;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .ui-dialog .confirm-delete-form .form-actions .form-submit:hover {
+.ui-dialog .confirm-delete-form .form-actions .form-submit:hover {
   color: #fff;
   background: #680303;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .ui-dialog .ui-dialog-buttonpane .form-actions .button {
+.ui-dialog .ui-dialog-buttonpane .form-actions .button {
   color: #fff;
   background: #5f9e53;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .ui-dialog .ui-dialog-buttonpane .form-actions .button:hover {
+.ui-dialog .ui-dialog-buttonpane .form-actions .button:hover {
   color: #fff;
   background: #8888ff;
   transition: .6s;
   transition-timing-function: ease-in-out;
 }
-.path-nomadmodule .ui-dialog .ui-dialog-titlebar-close {
+.ui-dialog .ui-dialog-titlebar-close {
   display: none;
 }
-.path-nomadmodule .ui-dialog .button:hover,
-.path-nomadmodule .ui-dialog .button:focus,
-.path-nomadmodule .ui-dialog .button:active {
+.ui-dialog .button:hover,
+.ui-dialog .button:focus,
+.ui-dialog .button:active {
   outline: none;
   box-shadow: none;
 }
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* Modal adaptive */
 @media (max-width: 991px) {
-  .path-nomadmodule .cats {
+  .cats {
     margin-top: 1em;
   }
 }
 @media (max-width: 798px) {
-  .path-nomadmodule .cats .rm_btn {
+  .cats .rm_btn {
     width: 60%;
   }
 }
 @media (max-width: 630px) {
-  .path-nomadmodule .cats .rm_btn {
+  .cats .rm_btn {
     width: 60%;
   }
 }
 @media (max-width: 480px) {
-  .path-nomadmodule .cats .rm_btn {
+  .cats .rm_btn {
     width: 60%;
   }
 }
 @media (max-width: 420px) {
-  .path-nomadmodule .cats .rm_btn {
+  .cats .rm_btn {
     width: 80%;
   }
 }
 @media (max-width: 360px) {
-  .path-nomadmodule .cats .rm_btn {
+  .cats .rm_btn {
     width: 100%;
   }
 }
