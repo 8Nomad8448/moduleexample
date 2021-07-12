@@ -1,0 +1,6 @@
+nomadmodule.cat_list:
+  title: 'Cat list'
+  description: 'Displays admin page with cat list in structure'
+  route_name: nomadmodule.cat_list
+  parent: system.admin_structure
+  weight: -100

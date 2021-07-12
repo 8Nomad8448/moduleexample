@@ -1,0 +1,28 @@
+nomadmodule.content:
+  path: '/nomadmodule/cats'
+  defaults:
+     _controller: 'Drupal\nomadmodule\Controller\NomadController::report'
+     _title: 'Hello! You can add here a photo of your cat.'
+  requirements:
+     _permission: 'access content'
+
+nomadmodule.deleteform:
+  path: '/admin/nomadmodule/delete/{id}'
+  defaults:
+    _form: '\Drupal\nomadmodule\Form\NomadConfirmDel'
+  requirements:
+    _permission: 'administer site configuration'
+
+nomadmodule.updateform:
+  path: '/admin/nomadmodule/update/{id}'
+  defaults:
+    _form: '\Drupal\nomadmodule\Form\Nomadformupdate'
+  requirements:
+    _permission: 'administer site configuration'
+
+nomadmodule.cat_list:
+  path: '/admin/structure/cat_list'
+  defaults:
+    _controller: 'Drupal\nomadmodule\Controller\NomadadminController::report'
+  requirements:
+    _permission: 'administer site configuration'

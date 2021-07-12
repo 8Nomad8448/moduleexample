@@ -1,0 +1,12 @@
+cats-style:
+  version: VERSION
+  css:
+    component:
+      css/cats.css: {}
+  js:
+    js/cats_modal.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupal.dialog.ajax
