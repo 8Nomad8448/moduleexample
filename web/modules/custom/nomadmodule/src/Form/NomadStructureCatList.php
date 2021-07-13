@@ -100,7 +100,7 @@ class NomadStructureCatList extends FormBase {
     $content['#attached']['library'][] = 'nomadmodule/cats-style';
     // Adding submit button to send all checked rows.
     $content['cancel'] = [
-      '#type' => 'submit',
+      '#type' => 'button',
       '#value' => t('Cancel'),
       '#attributes' => [
         'id' => 'abort',
